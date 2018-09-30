@@ -3,8 +3,11 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const db = require('knex')({
-  connectionString: process.env.DATABASE_URL,
-  ssl: true,
+  client: 'pg',
+  connection: {
+    connectionString: process.env.DATABASE_URL,
+    ssl: true,
+  }
 });
 const register = require('./controllers/register.js');
 const signin = require('./controllers/signin.js');
