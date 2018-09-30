@@ -3,13 +3,8 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const db = require('knex')({
-  client: 'pg',
-  connection: {
-    host : '127.0.0.1',
-    user : 'postgres',
-    password : 'postgres',
-    database : 'smart-brain'
-  }
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
 });
 const register = require('./controllers/register.js');
 const signin = require('./controllers/signin.js');
